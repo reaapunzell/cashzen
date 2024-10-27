@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'https://github.com/reaapunzell/cashzen-api', 
+    baseURL: 'https://cashzen-api.onrender.com/', 
     headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
