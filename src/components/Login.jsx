@@ -11,7 +11,6 @@ import {
   MDBCardImage,
   MDBInput,
   MDBIcon,
-  MDBCheckbox,
 } from "mdb-react-ui-kit";
 import MyImage from "../assets/cashzen-graphic.svg";
 import "./Components.css";
@@ -26,33 +25,31 @@ function Login() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent default form submission
     setError("");
 
     try {
       const response = await api.post("/auth/login", form);
-      const userId = response.data._id;
-
+      
       if (response.status === 200) {
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("userId", response.data.user._id);
         alert("Login successful!");
-        console.log(
-          `user ${response.data.user.username} successfully logged in`
-        );
+        console.log(`User ${response.data.user.username} successfully logged in`);
         setForm({ username: "", password: "" });
 
-        navigate(`/transactions/${userId}`);
+        navigate(`/transactions/${response.data.user._id}`); // Use the user ID from response
       }
     } catch (err) {
       if (err.response && err.response.status === 401) {
-        setError("Invalid username or pasword");
+        setError("Invalid username or password");
       } else {
-        setError("login failed. Please try again");
+        setError("Login failed. Please try again.");
       }
       console.error("Error logging in:", err);
     }
   };
+
   return (
     <MDBContainer fluid className="container">
       <MDBCard className="card text-black m-5">
@@ -63,33 +60,32 @@ function Login() {
               <p className="form-title h1 fw-bold mx-1 mx-md-4 mt-4">Login</p>
               {error && <p style={{ color: "red" }}>{error}</p>}{" "}
               {/* Display error message */}
-              <div className="input-group">
-                <MDBIcon fas icon="user me-3" size="lg" />
-                <MDBInput
-                  label="Username"
-                  name="username"
-                  type="text"
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="input-group">
-                <MDBIcon fas icon="lock me-3" size="lg" />
-                <MDBInput
-                  label="Password"
-                  name="password"
-                  type="password"
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <MDBBtn
-                className="register-btn mb-4"
-                size="lg"
-                onClick={handleSubmit}
-              >
-                Login
-              </MDBBtn>
+              
+              <form onSubmit={handleSubmit}> {/* Add form tag */}
+                <div className="input-group">
+                  <MDBIcon fas icon="user me-3" size="lg" />
+                  <MDBInput
+                    label="Username"
+                    name="username"
+                    type="text"
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="input-group">
+                  <MDBIcon fas icon="lock me-3" size="lg" />
+                  <MDBInput
+                    label="Password"
+                    name="password"
+                    type="password"
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <MDBBtn className="register-btn mb-4" size="lg" type="submit"> {/* Change to type="submit" */}
+                  Login
+                </MDBBtn>
+              </form>
             </MDBCol>
 
             {/* Image Section */}
