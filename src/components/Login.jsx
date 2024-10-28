@@ -2,6 +2,21 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api";
+import {
+    MDBBtn,
+    MDBContainer,
+    MDBRow,
+    MDBCol,
+    MDBCard,
+    MDBCardBody,
+    MDBCardImage,
+    MDBInput,
+    MDBIcon,
+    MDBCheckbox
+  }
+  from 'mdb-react-ui-kit';
+  import MyImage from '../assets/cashzen-graphic.svg';
+  import './Components.css'
 
 function Login() {
   const [form, setForm] = useState({ username: "", password: "" });
@@ -42,27 +57,37 @@ function Login() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="username"
-        placeholder="Username"
-        value={form.username}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="password"
-        name="password"
-        placeholder="Password"
-        value={form.password}
-        onChange={handleChange}
-        required
-      />
-      <button type="submit">Login</button>
-      {error && <p style={{ color: "red" }}>{error}</p>}{" "}
-      {/* Display error message */}
-    </form>
+    <MDBContainer fluid className="container">
+        <MDBCard className="card text-black m-5">
+            <MDBCardBody>
+                <MDBRow className="row">
+                    {/* Form Section */}
+                    <MDBCol md="10" lg="6" className="form-section">
+                        <p className="form-title h1 fw-bold mx-1 mx-md-4 mt-4">Login</p>
+
+                        {error && <p style={{ color: 'red' }}>{error}</p>} {/* Display error message */}
+
+                        <div className="input-group">
+                            <MDBIcon fas icon="user me-3" size="lg" />
+                            <MDBInput label="Username" name="username" type="text" onChange={handleChange} required />
+                        </div>
+
+                        <div className="input-group">
+                            <MDBIcon fas icon="lock me-3" size="lg" />
+                            <MDBInput label="Password" name="password" type="password" onChange={handleChange} required />
+                        </div>
+
+                        <MDBBtn className="register-btn mb-4" size="lg" onClick={handleSubmit}>Login</MDBBtn>
+                    </MDBCol>
+
+                    {/* Image Section */}
+                    <MDBCol md="10" lg="6" className="image-section">
+                        <MDBCardImage src={MyImage} fluid />
+                    </MDBCol>
+                </MDBRow>
+            </MDBCardBody>
+        </MDBCard>
+    </MDBContainer>
   );
 }
 

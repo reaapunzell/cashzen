@@ -2,7 +2,8 @@ import React, { useEffect, useState, useRef } from "react";
 import Chart from "chart.js/auto";
 import { CChart } from "@coreui/react-chartjs";
 import api from "../api";
-import "../App.css";
+import './Components.css'
+
 
 function TransactionList() {
   const [transactions, setTransactions] = useState([]);
@@ -169,6 +170,8 @@ function TransactionList() {
   };
 
   return (
+    <>
+
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", minHeight: "100vh", padding: "20px" }}>
     {/* Container for the transactions table and bar chart */}
     <div style={{ display: "flex", justifyContent: "space-between", width: "100%", maxWidth: "800px", marginBottom: "20px" }}>
@@ -233,7 +236,7 @@ function TransactionList() {
       />
     </div>
   </div>
-  
+  </>
   );
 }
 
