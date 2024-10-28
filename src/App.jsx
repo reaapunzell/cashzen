@@ -17,8 +17,8 @@ function App() {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto">
-          <Nav.Link href="/transactions/:userId">Dashboard</Nav.Link>
-          <Nav.Link href="/add-transaction">Transactions</Nav.Link>
+        <Nav.Link as={Link} to={`/transactions/${userId}`}>Dashboard</Nav.Link>
+        <Nav.Link as={Link} to="/add-transaction">Transactions</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Container>
