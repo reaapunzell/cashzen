@@ -7,7 +7,19 @@ import TransactionList from "./components/TransactionList";
 import { Link } from "react-router-dom";
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import WelcomePage from "./components/Home";
+import { useNavigate } from "react-router-dom"
 
+const MyNavbar = ({ userId }) => {
+    const navigate = useNavigate(); 
+  
+    const handleDashboardClick = () => {
+      navigate(`/transactions/${userId}`); 
+    };
+  
+    const handleAddTransactionClick = () => {
+      navigate("/add-transaction"); 
+    };
+};
 
 function App() {
   return (
@@ -17,8 +29,8 @@ function App() {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto">
-        <Nav.Link as={Link} to={`/transactions/${userId}`}>Dashboard</Nav.Link>
-        <Nav.Link as={Link} to="/add-transaction">Transactions</Nav.Link>
+        <Nav.Link onClick={handleDashboardClick}>Dashboard</Nav.Link>
+        <Nav.Link onClick={handleAddTransactionClick}>Transactions</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Container>
