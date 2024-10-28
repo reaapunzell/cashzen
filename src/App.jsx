@@ -19,37 +19,39 @@ const MyNavbar = ({ userId }) => {
     const handleAddTransactionClick = () => {
       navigate("/add-transaction"); 
     };
-};
-
-function App() {
-  return (
-    <> <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
-    <Container>
-      <Navbar.Brand href="/">Cashzen</Navbar.Brand>
-      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-      <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav className="me-auto">
-        <Nav.Link onClick={handleDashboardClick}>Dashboard</Nav.Link>
-        <Nav.Link onClick={handleAddTransactionClick}>Transactions</Nav.Link>
-        </Nav>
-      </Navbar.Collapse>
-    </Container>
-  </Navbar>
   
-    <Router>
-       
-      <div>
-        <Routes>
-            <Route path="/" element={<WelcomePage/>} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/add-transaction" element={<AddTransaction />} />
-          <Route path="/transactions/:userId" element={<TransactionList />} />
-        </Routes>
-      </div>
-    </Router>
-    </>
-  );
-}
+    return (
+      <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
+        <Container>
+          <Navbar.Brand href="/">Cashzen</Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link onClick={handleDashboardClick}>Dashboard</Nav.Link>
+              <Nav.Link onClick={handleAddTransactionClick}>Transactions</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    );
+  };
+
+  function App() {
+  
+    return (
+      <Router>
+        <MyNavbar userId={userId} /> {}
+        <div>
+          <Routes>
+            <Route path="/" element={<WelcomePage />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/add-transaction" element={<AddTransaction />} />
+            <Route path="/transactions/:userId" element={<TransactionList />} />
+          </Routes>
+        </div>
+      </Router>
+    );
+  }
 
 export default App;
