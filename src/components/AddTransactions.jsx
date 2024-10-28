@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
 import api from "../api";
+import './Components.css'
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 function AddTransaction() {
   const [form, setForm] = useState({
@@ -75,6 +83,8 @@ function AddTransaction() {
   };
 
   return (
+    <>
+    
     <div>
       <form onSubmit={handleSubmit}>
         <input
@@ -99,18 +109,8 @@ function AddTransaction() {
         </select>
         <button type="submit">Add Transaction</button>
       </form>
-
-      <h3>Your Transactions</h3>
-      <ul>
-        {transactions.map((transaction) => (
-          <li >
-            <strong>Amount:</strong> {transaction.amount} |{" "}
-            <strong>Description:</strong> {transaction.description} |{" "}
-            <strong>Category:</strong> {transaction.category}
-          </li>
-        ))}
-      </ul>
     </div>
+    </>
   );
 }
 

@@ -1,5 +1,4 @@
 #root {
-  max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -56,8 +55,8 @@
 
 .chart-container {
   width: 100%;
-  max-width: 600px; /* Set a max-width for the charts */
-  margin: 20px auto; /* Center the chart container */
+  max-width: 600px; 
+  margin: 20px auto; 
 }
 
 .error-message {
@@ -65,14 +64,14 @@
 }
 
 
-/* Optional: Responsive adjustments for smaller screens */
+
 @media (max-width: 768px) {
   .transaction-wrapper {
-    flex-direction: column; /* Stack items on smaller screens */
+    flex-direction: column; 
   }
-
+  
   .transaction-list,
   .chart-container {
-    flex: 1 1 100%; /* Take full width on small screens */
+    flex: 1 1 100%; 
   }
 }
