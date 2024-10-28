@@ -13,7 +13,7 @@ function App() {
   return (
     <> <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
     <Container>
-      <Navbar.Brand href="/home">Cashzen</Navbar.Brand>
+      <Navbar.Brand href="/">Cashzen</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto">
@@ -28,7 +28,7 @@ function App() {
        
       <div>
         <Routes>
-            <Route path="/home" element={<WelcomePage/>} />
+            <Route path="/" element={<WelcomePage/>} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/add-transaction" element={<AddTransaction />} />
