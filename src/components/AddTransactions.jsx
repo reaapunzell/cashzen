@@ -63,8 +63,7 @@ function AddTransaction() {
 
   const fetchTransactions = async () => {
     const token = localStorage.getItem("token");
-
-    const userId = response.data._id
+    const userId = localStorage.getItem("userId");
 
     if (!token) {
       setError("User not authenticated.");
